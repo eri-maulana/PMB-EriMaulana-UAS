@@ -1,16 +1,16 @@
 <?php
-   include 'config.php';
+include 'config.php';
 
-   if(isset($_POST['hapus'])){
-      $iduser = $_POST['iduser'];
+if (isset($_POST['hapus'])) {
+   $iduser = $_POST['iduser'];
 
-      $hapus = mysqli_query($conn, "DELETE FROM user WHERE iduser = '$iduser'");
-      if($hapus){
-         header("location: list-mahasiswa.php");
-      } else {
-         header("location: form-hapus.php");
-      }
+   $hapus = mysqli_query($conn, "DELETE FROM user WHERE iduser = '$iduser'");
+   if ($hapus) {
+      header("location: list-mahasiswa.php");
+   } else {
+      header("location: form-hapus.php");
    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +19,7 @@
    <meta charset="utf-8">
    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-   <title>PMB | Stmik Al Fath</title>
+   <title>Form Hapus</title>
    <meta content="" name="description">
    <meta content="" name="keywords">
 
@@ -28,9 +28,7 @@
    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
    <!-- Google Fonts -->
-   <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap"
-      rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
 
    <!-- Vendor CSS Files -->
    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
@@ -57,13 +55,13 @@
    <?php
    $ambilbaris = mysqli_query($conn, "SELECT * FROM user");
    $baris = mysqli_fetch_array($ambilbaris);
-   $iduser=$baris['iduser'];
-   $nama=$baris['nama'];
+   $iduser = $baris['iduser'];
+   $nama = $baris['nama'];
    ?>
-   <div class="container mt-5" id="iduser<?=$iduser;?>">
-      <form action="list-mahasiswa.php" method="post">
-         <input type="hidden" id="iduser<?=$iduser;?>" name="iduser" value="<?=$iduser;?>">
-         <h1 class="text-center"> Apakah Kamu Yakin Ingin Menghapus Akun <strong><?=$nama;?></strong></h1>
+   <div class="container mt-5" id="iduser<?= $iduser; ?>">
+      <form action="" method="post">
+         <input type="hidden" name="iduser" value="<?= $iduser; ?>">
+         <h1 class="text-center"> Apakah Kamu Yakin Ingin Menghapus Akun <strong><?= $nama; ?></strong></h1>
          <div class="text-center">
             <button type="submit" class="btn btn-primary mb-3 text-center" name="hapus">Hapus</button>
          </div>
